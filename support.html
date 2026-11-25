@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support &amp; Beta FAQ — Prism Research Reader</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --accent: #0f766e;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0d10;
+        --surface: #14181f;
+        --text: #f3f4f6;
+        --muted: #9ca3af;
+        --border: #262c36;
+        --accent: #2dd4bf;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    main {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      font-size: 14px;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin: 16px 0;
+    }
+    h1 {
+      font-size: 30px;
+      line-height: 1.2;
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+    p {
+      margin: 0 0 10px;
+      color: var(--muted);
+    }
+    p:last-child { margin-bottom: 0; }
+    a { color: var(--accent); }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+    </nav>
+
+    <h1>Support &amp; TestFlight Beta FAQ</h1>
+    <p>Need help with Prism Research Reader or want to report a TestFlight issue? Reach out anytime at <a href="mailto:mxltreatment@gmail.com">mxltreatment@gmail.com</a>.</p>
+
+    <div class="card">
+      <h2>How do I send TestFlight beta feedback?</h2>
+      <p>
+        You can take a screenshot while using Prism and tap <strong>Share Beta Feedback</strong> in TestFlight, use the <strong>Send Beta Feedback</strong> option in the TestFlight app, or open <strong>Settings → About Prism → Send Feedback &amp; Support</strong> inside Prism to email <a href="mailto:mxltreatment@gmail.com">mxltreatment@gmail.com</a> with your app version included.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Do I need an account to use Prism?</h2>
+      <p>
+        No. Prism works completely in <strong>Local-Only Mode</strong> by default. Your saved papers, offline PDFs, topics, and on-device personalization stay on your iPhone or iPad.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>How does optional Sign in with Apple &amp; iCloud Sync work?</h2>
+      <p>
+        If you sign in with Apple in Onboarding or Settings, Prism requests no name or email address—only an anonymous Apple user identifier stored in your device Keychain. Your followed topics and saved paper IDs sync across your devices via your personal Apple iCloud Key-Value Store.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>How do I delete my data or account?</h2>
+      <p>
+        Open <strong>Settings → Storage &amp; Personalization</strong> to clear cached PDFs, search history, taste signals, or your saved library. If you signed in with Apple, tap <strong>Delete Account</strong> in <strong>Settings → Account &amp; Sync</strong> to erase synced iCloud data (and optionally all local data). To revoke Apple authorization, open <strong>iOS Settings → Apple Account → Sign in with Apple</strong>.
+      </p>
+    </div>
+
+    <footer>
+      &copy; 2026 Nasir Cooley · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a>
+    </footer>
+  </main>
+</body>
+</html>

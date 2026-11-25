@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Prism Research Reader</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --accent: #0f766e;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0d10;
+        --surface: #14181f;
+        --text: #f3f4f6;
+        --muted: #9ca3af;
+        --border: #262c36;
+        --accent: #2dd4bf;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    main {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      font-size: 14px;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .meta-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 16px 0 28px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    h1 {
+      font-size: 30px;
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: 19px;
+      margin: 28px 0 8px;
+    }
+    p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9em;
+    }
+    a { color: var(--accent); }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="support.html">Support</a>
+    </nav>
+
+    <h1>Privacy Policy — Prism Research Reader</h1>
+    <div class="meta-box">
+      <div><strong>Effective Date:</strong> November 25, 2026</div>
+      <div><strong>Developer / Operator:</strong> Nasir Cooley</div>
+      <div><strong>Contact:</strong> <a href="mailto:mxltreatment@gmail.com">mxltreatment@gmail.com</a></div>
+    </div>
+
+    <p>
+      Prism ("Prism Research Reader"), operated by Nasir Cooley, is designed around local-first privacy. This Privacy Policy explains how Prism handles local storage, direct requests to scholarly indexes, and optional Sign in with Apple sync.
+    </p>
+
+    <h2>1. Local-First Privacy Architecture</h2>
+    <p>
+      Prism is designed to operate in Local-Only Mode by default without requiring an account. Your saved papers, offline PDFs, followed topics, recent search history, and reading taste signals are stored locally on your device using Apple's SwiftData and UserDefaults frameworks. Prism contains no third-party analytics SDKs, advertising networks, or cross-app tracking, and your data is never sold or shared for advertising.
+    </p>
+
+    <h2>2. On-Device Personalization &amp; Offline Storage</h2>
+    <p>
+      Feed ranking (<em>Faces</em>, <em>Latest</em>, and <em>Important Reads</em>) and search recommendations are computed entirely on your device using Apple's NaturalLanguage framework and local TF-IDF scoring based on your reading interactions (opens, reading dwell time, likes/dislikes, and bookmarks). Downloaded Open Access PDFs are stored inside your device's application sandbox under <code>SavedPDFs/</code> and marked with <code>isExcludedFromBackup</code> so cached PDFs do not bloat unencrypted backups.
+    </p>
+
+    <h2>3. Direct Requests to Scholarly Indexes &amp; Publishers</h2>
+    <p>
+      When you refresh feeds, search, or open/download a paper, your device makes direct HTTPS requests to public scholarly APIs — <strong>OpenAlex</strong>, <strong>Semantic Scholar</strong> (Allen Institute for AI), <strong>arXiv</strong>, <strong>PubMed / NCBI NLM E-utilities</strong>, and <strong>Crossref</strong> — as well as external publisher or repository hosts when loading PDFs or web pages in Safari (<code>SFSafariViewController</code>). These third-party services receive standard HTTP request metadata (your IP address, query terms or topic filters, and the <code>PrismResearchApp/1.0</code> User-Agent header with operator contact <code>mxltreatment@gmail.com</code> for API polite-pool compliance) governed by their respective privacy policies. Prism never attaches your Apple ID, name, or personal email address to scholarly search or feed queries.
+    </p>
+
+    <h2>4. Optional Sign in with Apple &amp; iCloud Sync</h2>
+    <p>
+      If you choose to use Sign in with Apple in Onboarding or Settings, Prism requests <strong>no name or email scopes</strong>—it only receives an anonymous, app-scoped Apple user identifier. That identifier is stored exclusively in the device-only iOS Keychain (<code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>) to enable syncing your followed topics and saved paper identifiers across your devices via your personal Apple iCloud Key-Value Store (<code>NSUbiquitousKeyValueStore</code>). Prism periodically checks Apple credential revocation state (<code>ASAuthorizationAppleIDProvider</code>) and automatically signs out if you revoke access; you can also revoke Sign in with Apple at any time in <strong>iOS Settings → Apple Account → Sign in with Apple</strong>.
+    </p>
+
+    <h2>5. Data Retention, Deletion Controls &amp; Your Privacy Rights</h2>
+    <p>
+      You have full control over your data at all times in <strong>Settings → Storage &amp; Personalization</strong> and <strong>Account &amp; Sync</strong>: you can clear recent search history and cached network responses, reset your reading taste profile, clear cached offline PDFs, clear your saved library, sign out to return to Local-Only Mode, or permanently delete your account and all cloud/local data. Under applicable privacy laws (including GDPR and CCPA/CPRA), these in-app controls provide immediate self-service access, rectification, and erasure of your personal data.
+    </p>
+
+    <h2>6. Children's Privacy &amp; Contact</h2>
+    <p>
+      Prism is a general-audience academic research reader and does not knowingly collect personal information from children under 13 (or under 16 in the EEA/UK, or the minimum age in your jurisdiction). For privacy questions or requests, contact <a href="mailto:mxltreatment@gmail.com">mxltreatment@gmail.com</a>.
+    </p>
+
+    <footer>
+      &copy; 2026 Nasir Cooley · <a href="terms.html">Terms of Use</a> · <a href="support.html">Support</a>
+    </footer>
+  </main>
+</body>
+</html>

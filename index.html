@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prism Research Reader</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --accent: #0f766e;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0d10;
+        --surface: #14181f;
+        --text: #f3f4f6;
+        --muted: #9ca3af;
+        --border: #262c36;
+        --accent: #2dd4bf;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+    header {
+      margin-bottom: 32px;
+    }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    p.lead {
+      font-size: 17px;
+      color: var(--muted);
+      margin: 0;
+    }
+    .cards {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    a.card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      transition: border-color 0.15s ease;
+    }
+    a.card:hover {
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 17px;
+      margin: 0 0 4px;
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Prism Research Reader · iOS</div>
+      <h1>Calm, Local-First Academic Discovery</h1>
+      <p class="lead">
+        Search and read scholarly literature across OpenAlex, Semantic Scholar, arXiv, PubMed, and Crossref — directly on your device with no ads, no tracking, and optional iCloud sync.
+      </p>
+    </header>
+
+    <section class="cards" aria-label="Documentation and Support">
+      <a class="card" href="privacy.html">
+        <h2>Privacy Policy</h2>
+        <p>How Prism handles local SwiftData storage, direct scholarly API requests, and zero-PII Sign in with Apple.</p>
+      </a>
+      <a class="card" href="terms.html">
+        <h2>Terms of Use</h2>
+        <p>Academic source attributions, medical/preprint disclaimers, TestFlight beta terms, and governing law.</p>
+      </a>
+      <a class="card" href="support.html">
+        <h2>Support &amp; Beta FAQ</h2>
+        <p>TestFlight feedback instructions, Local-Only Mode, iCloud sync, and account/data deletion help.</p>
+      </a>
+    </section>
+
+    <footer>
+      Developed by Nasir Cooley · Contact:
+      <a href="mailto:mxltreatment@gmail.com">mxltreatment@gmail.com</a>
+    </footer>
+  </main>
+</body>
+</html>
