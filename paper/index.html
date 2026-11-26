@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>Shared Paper — Prism Research Reader</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #4b5563;
+      --border: #e5e7eb;
+      --accent: #0f766e;
+      --accent-text: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0d10;
+        --surface: #14181f;
+        --text: #f3f4f6;
+        --muted: #9ca3af;
+        --border: #262c36;
+        --accent: #2dd4bf;
+        --accent-text: #062825;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      font-size: 14px;
+    }
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 22px;
+    }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 26px;
+      line-height: 1.25;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+      overflow-wrap: anywhere;
+    }
+    .badge {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 12px;
+      margin-bottom: 18px;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 999px;
+      padding: 11px 20px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--bg);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--accent-text);
+      border-color: transparent;
+    }
+    .hidden {
+      display: none;
+    }
+    footer {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../terms.html">Terms of Use</a>
+      <a href="../support.html">Support</a>
+    </nav>
+
+    <section id="valid-card" class="card hidden" aria-live="polite">
+      <div class="eyebrow">Shared via Prism Research Reader</div>
+      <h1 id="paper-title">Research Article</h1>
+      <div id="identifier-badge" class="badge"></div>
+      <p class="note">
+        Prism links carry only canonical scholarly identifiers — no cached PDFs, publisher abstracts, or tracking tokens. Open this paper in Prism or view it directly at its official source.
+      </p>
+      <div class="actions">
+        <a id="open-prism-btn" class="btn btn-primary" href="#">Open in Prism</a>
+        <a id="official-source-btn" class="btn" href="#" rel="noopener noreferrer">View at Official Source</a>
+      </div>
+    </section>
+
+    <section id="invalid-card" class="card hidden" aria-live="polite">
+      <div class="eyebrow">Prism Research Reader</div>
+      <h1>Invalid or Missing Paper Link</h1>
+      <p class="note">
+        This link does not contain a recognized scholarly identifier (DOI, arXiv ID, PubMed PMID, OpenAlex ID, or Semantic Scholar ID).
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="../index.html">About Prism</a>
+        <a class="btn" href="../support.html">Support &amp; FAQ</a>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2026 Nasir Cooley · Zero cookies, zero analytics ·
+      <a href="../privacy.html">Privacy Policy</a> ·
+      <a href="../terms.html">Terms of Use</a>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      const MAX_URL_LENGTH = 1024;
+      const MAX_TITLE_LENGTH = 140;
+
+      function hasUnsafeChars(value) {
+        if (!value || value.indexOf("..") !== -1) {
+          return true;
+        }
+        for (let i = 0; i < value.length; i++) {
+          const code = value.charCodeAt(i);
+          if (code < 0x20 || code === 0x7F) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function normalizeDOI(raw) {
+        if (!raw || hasUnsafeChars(raw)) return null;
+        let v = raw.trim();
+        if (v.toLowerCase().startsWith("doi:")) {
+          v = v.slice(4).trim();
+        }
+        const prefixes = ["https://doi.org/", "http://doi.org/"];
+        for (const p of prefixes) {
+          if (v.toLowerCase().startsWith(p)) {
+            v = v.slice(p.length).trim();
+            break;
+          }
+        }
+        v = v.toLowerCase();
+        if (!v || v.length > 256 || v.indexOf("..") !== -1) return null;
+        if (!/^10\.\d{4,9}\/[^\s<>"{}|\\^\[\]`]+$/.test(v)) return null;
+        return v;
+      }
+
+      function normalizeArXiv(raw) {
+        if (!raw || hasUnsafeChars(raw)) return null;
+        let v = raw.trim();
+        if (v.toLowerCase().startsWith("arxiv:")) {
+          v = v.slice(6).trim();
+        }
+        const prefixes = [
+          "https://arxiv.org/abs/",
+          "http://arxiv.org/abs/",
+          "https://arxiv.org/pdf/",
+          "http://arxiv.org/pdf/"
+        ];
+        for (const p of prefixes) {
+          if (v.toLowerCase().startsWith(p)) {
+            v = v.slice(p.length).trim();
+            break;
+          }
+        }
+        if (v.toLowerCase().endsWith(".pdf")) {
+          v = v.slice(0, -4);
+        }
+        if (!v || v.length > 64 || v.indexOf("..") !== -1) return null;
+        if (!/^(\d{4}\.\d{4,5}(v\d+)?|[a-z\-]+(\.[A-Za-z]{2})?\/\d{7}(v\d+)?)$/.test(v)) return null;
+        return v;
+      }
+
+      function normalizePMID(raw) {
+        if (!raw || hasUnsafeChars(raw)) return null;
+        let v = raw.trim();
+        for (const p of ["pubmed:", "pmid:"]) {
+          if (v.toLowerCase().startsWith(p)) {
+            v = v.slice(p.length).trim();
+            break;
+          }
+        }
+        if (!/^\d{1,10}$/.test(v)) return null;
+        return v;
+      }
+
+      function normalizeOpenAlex(raw) {
+        if (!raw || hasUnsafeChars(raw)) return null;
+        let v = raw.trim();
+        for (const p of ["openalex:", "https://openalex.org/", "http://openalex.org/"]) {
+          if (v.toLowerCase().startsWith(p)) {
+            v = v.slice(p.length).trim();
+            break;
+          }
+        }
+        v = v.toUpperCase();
+        if (!/^W\d{5,15}$/.test(v)) return null;
+        return v;
+      }
+
+      function normalizeS2(raw) {
+        if (!raw || hasUnsafeChars(raw)) return null;
+        let v = raw.trim();
+        if (v.toLowerCase().startsWith("s2:")) {
+          v = v.slice(3).trim();
+        }
+        v = v.toLowerCase();
+        if (!/^[0-9a-f]{40}$/.test(v)) return null;
+        return v;
+      }
+
+      function sanitizeTitle(raw) {
+        if (!raw) return null;
+        let cleaned = "";
+        for (let i = 0; i < raw.length; i++) {
+          const code = raw.charCodeAt(i);
+          if (code >= 0x20 && code !== 0x7F) {
+            cleaned += raw[i];
+          }
+        }
+        cleaned = cleaned.replace(/\s+/g, " ").trim();
+        if (!cleaned) return null;
+        return cleaned.length > MAX_TITLE_LENGTH ? cleaned.slice(0, MAX_TITLE_LENGTH).trim() : cleaned;
+      }
+
+      function parseCurrentLink() {
+        if (window.location.href.length > MAX_URL_LENGTH) {
+          return null;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const validators = [
+          {
+            key: "doi",
+            fn: normalizeDOI,
+            label: (v) => "DOI: " + v,
+            source: (v) => "https://doi.org/" + v.split("/").map(encodeURIComponent).join("/")
+          },
+          {
+            key: "arxiv",
+            fn: normalizeArXiv,
+            label: (v) => "arXiv: " + v,
+            source: (v) => "https://arxiv.org/abs/" + v
+          },
+          {
+            key: "pmid",
+            fn: normalizePMID,
+            label: (v) => "PMID: " + v,
+            source: (v) => "https://pubmed.ncbi.nlm.nih.gov/" + v + "/"
+          },
+          {
+            key: "openalex",
+            fn: normalizeOpenAlex,
+            label: (v) => "OpenAlex: " + v,
+            source: (v) => "https://openalex.org/" + v
+          },
+          {
+            key: "s2",
+            fn: normalizeS2,
+            label: (v) => "Semantic Scholar: " + v.slice(0, 12) + "…",
+            source: (v) => "https://www.semanticscholar.org/paper/" + v
+          }
+        ];
+
+        const validEntries = {};
+        for (const item of validators) {
+          if (params.has(item.key)) {
+            const normalized = item.fn(params.get(item.key));
+            if (!normalized) {
+              return null;
+            }
+            validEntries[item.key] = { item, value: normalized };
+          }
+        }
+
+        for (const item of validators) {
+          if (validEntries[item.key]) {
+            const value = validEntries[item.key].value;
+            const title = sanitizeTitle(params.get("t"));
+            return {
+              key: item.key,
+              value,
+              title,
+              badge: item.label(value),
+              officialSourceUrl: item.source(value)
+            };
+          }
+        }
+
+        return null;
+      }
+
+      const validCard = document.getElementById("valid-card");
+      const invalidCard = document.getElementById("invalid-card");
+      const parsed = parseCurrentLink();
+
+      if (!parsed) {
+        invalidCard.classList.remove("hidden");
+        return;
+      }
+
+      document.getElementById("paper-title").textContent = parsed.title || "Shared Research Paper";
+      document.getElementById("identifier-badge").textContent = parsed.badge;
+
+      let query = encodeURIComponent(parsed.key) + "=" + encodeURIComponent(parsed.value);
+      if (parsed.title) {
+        query += "&t=" + encodeURIComponent(parsed.title);
+      }
+
+      document.getElementById("open-prism-btn").setAttribute("href", "prism://paper?" + query);
+      document.getElementById("official-source-btn").setAttribute("href", parsed.officialSourceUrl);
+      validCard.classList.remove("hidden");
+    })();
+  </script>
+</body>
+</html>

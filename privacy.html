@@ -126,12 +126,17 @@
       If you choose to use Sign in with Apple in Onboarding or Settings, Prism requests <strong>no name or email scopes</strong>—it only receives an anonymous, app-scoped Apple user identifier. That identifier is stored exclusively in the device-only iOS Keychain (<code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>) to enable syncing your followed topics and saved paper identifiers across your devices via your personal Apple iCloud Key-Value Store (<code>NSUbiquitousKeyValueStore</code>). Prism periodically checks Apple credential revocation state (<code>ASAuthorizationAppleIDProvider</code>) and automatically signs out if you revoke access; you can also revoke Sign in with Apple at any time in <strong>iOS Settings → Apple Account → Sign in with Apple</strong>.
     </p>
 
-    <h2>5. Data Retention, Deletion Controls &amp; Your Privacy Rights</h2>
+    <h2>5. App-to-App Paper Sharing &amp; Deep Links</h2>
+    <p>
+      Shared Prism links encode only canonical public scholarly identifiers (DOI, arXiv ID, PubMed ID, OpenAlex ID, or Semantic Scholar ID) and an optional short display title—never your Apple ID, device identifier, reading history, taste signals, or tracking or referral parameters. Sharing uses Apple's native iOS Share Sheet; once shared, transmission is governed by the messaging or destination app you choose. Opening a shared link inside Prism causes the recipient's device to look up the paper locally first and otherwise query public scholarly APIs directly (subject to Section 3). Opening a link on Prism's static web fallback page in Safari runs client-side with zero cookies, analytics, or third-party scripts and links directly to the official scholarly source.
+    </p>
+
+    <h2>6. Data Retention, Deletion Controls &amp; Your Privacy Rights</h2>
     <p>
       You have full control over your data at all times in <strong>Settings → Storage &amp; Personalization</strong> and <strong>Account &amp; Sync</strong>: you can clear recent search history and cached network responses, reset your reading taste profile, clear cached offline PDFs, clear your saved library, sign out to return to Local-Only Mode, or permanently delete your account and all cloud/local data. Under applicable privacy laws (including GDPR and CCPA/CPRA), these in-app controls provide immediate self-service access, rectification, and erasure of your personal data.
     </p>
 
-    <h2>6. Children's Privacy &amp; Contact</h2>
+    <h2>7. Children's Privacy &amp; Contact</h2>
     <p>
       Prism is a general-audience academic research reader and does not knowingly collect personal information from children under 13 (or under 16 in the EEA/UK, or the minimum age in your jurisdiction). For privacy questions or requests, contact <a href="mailto:mxltreatment@gmail.com">mxltreatment@gmail.com</a>.
     </p>
