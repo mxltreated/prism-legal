@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "S65L665Q9P.com.prismresearch.app"
+        ],
+        "components": [
+          { "/": "/prism-legal/paper" },
+          { "/": "/prism-legal/paper/" },
+          { "/": "/prism-legal/paper/*" },
+          { "/": "/paper" },
+          { "/": "/paper/" },
+          { "/": "/paper/*" }
+        ]
+      }
+    ]
+  }
+}
